@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Install Cheesyboy</title>
+  <meta name="description" content="Run one command in Terminal to install Cheesyboy on your Mac.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=VT323&display=swap" rel="stylesheet">
+
+  <style>
+    /* Site design tokens — mirrored from index.html so this page reads as
+       part of the same product, but no nav/footer/marketing chrome. */
+    :root {
+      --bg-primary: #ffffff;
+      --bg-tint: #FFF4E6;
+      --text-main: #1F1F1F;
+      --text-muted: #5C5852;
+      --orange-primary: #FF7A1A;
+      --orange-hot: #FF5500;
+      --orange-dark: #C2410C;
+      --border-strong: #E8D4B5;
+      --code-bg: #1A1A1A;
+      --code-text: #F8F8F2;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+    }
+
+    .card {
+      max-width: 720px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'VT323', 'JetBrains Mono', monospace;
+      font-size: 3rem;
+      letter-spacing: 0;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--orange-dark);
+    }
+
+    .cat {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+    }
+
+    .lede {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .cmd-wrap {
+      position: relative;
+      background: var(--code-bg);
+      color: var(--code-text);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px 28px 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      text-align: left;
+    }
+
+    .cmd {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      white-space: pre;
+      overflow-x: auto;
+      padding-right: 100px;   /* leave room for the copy button */
+      -webkit-user-select: all;
+      user-select: all;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--orange-hot);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background 120ms ease, transform 120ms ease;
+    }
+    .copy-btn:hover { background: var(--orange-dark); }
+    .copy-btn:active { transform: translateY(1px); }
+    .copy-btn.copied {
+      background: #18A058;
+    }
+
+    .footnote {
+      margin-top: 28px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .footnote a {
+      color: var(--orange-dark);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--orange-dark);
+    }
+    .footnote a:hover { color: var(--orange-hot); border-bottom-color: var(--orange-hot); }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2.2rem; }
+      .lede { font-size: 1rem; }
+      .cmd { font-size: 0.85rem; padding-right: 0; }
+      .copy-btn {
+        position: static;
+        margin-top: 16px;
+        display: block;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="cat" aria-hidden="true">🐱</div>
+    <h1>Install Cheesyboy</h1>
+    <p class="lede">Open Terminal on your Mac, paste this command, hit Enter.</p>
+
+    <div class="cmd-wrap">
+      <button class="copy-btn" type="button" id="copy" aria-label="Copy install command">Copy</button>
+      <div class="cmd" id="cmd">bash &lt;(curl -fsSL https://cheesyboy.dev/install.sh)</div>
+    </div>
+
+    <p class="footnote">
+      Stuck? See the <a href="/help">troubleshooting guide</a> or email <a href="mailto:stephen@bubblesllc.com">stephen@bubblesllc.com</a>.
+    </p>
+  </main>
+
+  <script>
+    // Copy-to-clipboard with graceful fallback.
+    // The displayed command uses HTML entities (&lt;); we copy the plain form.
+    const COMMAND = 'bash <(curl -fsSL https://cheesyboy.dev/install.sh)';
+
+    const btn = document.getElementById('copy');
+    btn.addEventListener('click', async () => {
+      let ok = false;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(COMMAND);
+          ok = true;
+        } else {
+          // Older / non-HTTPS fallback
+          const ta = document.createElement('textarea');
+          ta.value = COMMAND;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          ok = document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+      } catch (err) {
+        ok = false;
+      }
+
+      if (ok) {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 1800);
+      } else {
+        btn.textContent = 'Press ⌘C';
+        // Select the command text so manual copy is one step away.
+        const range = document.createRange();
+        range.selectNodeContents(document.getElementById('cmd'));
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      }
+    });
+  </script>
+</body>
+</html>
