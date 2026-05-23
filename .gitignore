@@ -1,0 +1,6 @@
+.vercel
+.DS_Store
+
+# WIP backups created by manual editing — not for the repo
+*.pre-*-backup
+*.bak

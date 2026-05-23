@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Cheesyboy 🐈 — Install in 5 Minutes</title>
+  <meta name="description" content="Thanks for buying Cheesyboy. Here's how to get up and running in 5 minutes.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=VT323&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #FFF8F0;
+      --bg-tint: #FFF4E6;
+      --text-main: #1F1F1F;
+      --text-muted: #5C5852;
+      --orange-primary: #FF7A1A;
+      --orange-hot: #FF5500;
+      --orange-dark: #C2410C;
+      --orange-faded: #FFD4A1;
+      --border-color: #F0E4D2;
+      --border-strong: #E8D4B5;
+      --code-bg: #1A1A1A;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border-color);
+      padding: 18px 0;
+      background: rgba(255, 255, 255, 0.95);
+    }
+    header .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 50px;
+      padding: 30px 0;
+      background: radial-gradient(60% 70% at 50% 30%, rgba(255, 122, 26, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    }
+
+    .hero-cat {
+      width: 120px;
+      height: auto;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .pixel-cat {
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+
+    h1 {
+      font-family: 'VT323', monospace;
+      font-size: 3.5rem;
+      line-height: 1.1;
+      color: var(--orange-dark);
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    .subhead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .license-box {
+      background: var(--bg-tint);
+      border: 2px solid var(--orange-faded);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin: 40px 0;
+      text-align: center;
+    }
+    .license-box h3 {
+      font-size: 1.1rem;
+      color: var(--orange-dark);
+      margin-bottom: 10px;
+    }
+    .license-box p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .install-steps h2 {
+      font-size: 1.75rem;
+      margin-bottom: 24px;
+    }
+
+    .step {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 32px;
+      align-items: flex-start;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--orange-hot);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .step h3 {
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+    .step p { color: var(--text-muted); margin-bottom: 8px; }
+    .step code {
+      display: inline-block;
+      background: var(--code-bg);
+      color: #FFB366;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      word-break: break-all;
+    }
+    .copy-block {
+      background: var(--code-bg);
+      color: #FFB366;
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      position: relative;
+      margin-top: 10px;
+      word-break: break-all;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FFB366;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .copy-btn:hover { background: rgba(255, 255, 255, 0.15); }
+
+    .help-section {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-top: 40px;
+      text-align: center;
+    }
+    .help-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    .help-section p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .help-section a {
+      display: inline-block;
+      background: var(--orange-hot);
+      color: white;
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      margin: 4px;
+    }
+    .help-section a:hover { background: var(--orange-dark); }
+    .help-section a.secondary {
+      background: transparent;
+      color: var(--orange-dark);
+      border: 2px solid var(--orange-faded);
+    }
+
+    .verify {
+      background: var(--bg-tint);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-top: 30px;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+    .verify strong { color: var(--orange-dark); }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border-color);
+      margin-top: 40px;
+    }
+    footer a { color: var(--orange-dark); text-decoration: none; }
+  
+
+  
+    /* Chaser Cat */
+    .chaser-cat {
+      position: fixed;
+      bottom: 16px;
+      left: 30px;
+      width: 70px;
+      height: auto;
+      z-index: 50;
+      pointer-events: auto;
+      cursor: pointer;
+      user-select: none;
+    }
+    .chaser-cat img { width: 100%; height: auto; display: block; }
+    .chaser-cat.face-right img { transform: scaleX(-1); }
+    .chaser-cat.bat { animation: catBat 0.35s ease-out; }
+    @keyframes catBat {
+      0% { transform: translate(0, 0); }
+      40% { transform: translate(0, -14px) scale(1.1); }
+      100% { transform: translate(0, 0); }
+    }
+    @media (max-width: 768px) {
+      .chaser-cat { width: 55px; }
+    }
+
+  
+    /* Mute toggle */
+    .mute-toggle {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 244, 230, 0.95);
+      border: 1px solid var(--border-strong);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      z-index: 200;
+      backdrop-filter: blur(8px);
+      user-select: none;
+    }
+    .mute-toggle:hover { transform: scale(1.08); }
+    .mute-toggle.muted { opacity: 0.65; }
+
+  </style>
+</head>
+<body>
+
+  <div id="mute-toggle" class="mute-toggle" title="Toggle sound" aria-label="Toggle sound">🔊</div>
+
+  <!-- Chaser Cat -->
+  <div id="chaser-cat" class="chaser-cat pixel-cat">
+    <img id="chaser-sprite" src="cats/cat-sit.png" alt="Cheesy chasing your mouse">
+  </div>
+
+
+  <header>
+    <div class="inner">
+      <a href="/" class="logo">🐈 Cheesyboy</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <img src="cats/cat-sit.png" alt="Cheesy the cat" class="hero-cat pixel-cat">
+      <h1>Welcome to Cheesyboy</h1>
+      <p class="subhead">Thanks for buying. Let's get you set up in under 5 minutes.</p>
+    </div>
+
+    <div class="license-box">
+      <h3>📧 Your license key</h3>
+      <p>Your license key was emailed to you. Check your inbox (and spam folder, just in case).</p>
+    </div>
+
+    <div class="install-steps">
+      <h2>5-minute install</h2>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div style="flex: 1;">
+          <h3>Open Terminal on your Mac</h3>
+          <p>Press <strong>Cmd + Space</strong>, type "Terminal", hit Enter. A black/white window appears.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div style="flex: 1;">
+          <h3>Paste this install command</h3>
+          <p>Copy this whole line and paste it into Terminal. Hit Enter.</p>
+          <div class="copy-block">
+            curl -fsSL https://cheesyboy.dev/install.sh | bash
+            <button class="copy-btn" onclick="copyCmd(this)">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div style="flex: 1;">
+          <h3>Follow the wizard</h3>
+          <p>You'll be asked for:</p>
+          <p>• <strong>Telegram bot token</strong> — don't have one? The wizard walks you through making one via <a href="https://t.me/BotFather" target="_blank">@BotFather</a> (takes 2 minutes)</p>
+          <p>• <strong>Your Telegram chat ID</strong> — the wizard helps you find this too</p>
+          <p>• <strong>Your license key</strong> — from the email you just got</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div style="flex: 1;">
+          <h3>Done!</h3>
+          <p>The installer auto-starts Cheesyboy. From now on, it runs in the background whenever you're using Claude Code.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="verify">
+      <strong>Already installed?</strong> Send <code style="background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 4px;">/status</code> to your bot in Telegram to verify everything works. Your bot should reply with your active session info.
+    </div>
+
+    <div class="help-section">
+      <h2>Need help?</h2>
+      <p>Run into an issue? I'm here to help. Email me directly and I'll get back to you the same day.</p>
+      <a href="mailto:hello@cheesyboy.dev?subject=Cheesyboy%20Help">Email Cheesy Boy</a>
+      <a href="/docs.html" class="secondary">View docs</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>🐈 Cheesyboy — Made by Stephen Lucas · <a href="/">Home</a> · <a href="mailto:hello@cheesyboy.dev">Contact</a></p>
+    <p style="margin-top: 8px;">Built on <a href="https://github.com/jsayubi/ccgram" target="_blank">ccgram</a> (MIT) · © 2026 Stephen Lucas</p>
+  </footer>
+
+  <script>
+    function copyCmd(btn) {
+      const text = btn.parentElement.textContent.replace('Copy', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
+  </script>
+
+
+
+  <script>
+    (function() {
+      const cat = document.getElementById('chaser-cat');
+      const sprite = document.getElementById('chaser-sprite');
+      if (!cat || !sprite) return;
+      const POSES = {
+        sit: 'cats/cat-sit.png', walk: 'cats/cat-walk.png',
+        pounce: 'cats/cat-pounce.png', groom: 'cats/cat-groom.png',
+        sleep: 'cats/cat-sleep.png', look: 'cats/cat-look-up.png'
+      };
+      let mouseX = window.innerWidth / 2, mouseY = window.innerHeight - 100;
+      let lastMouseMove = Date.now(), mouseHasMoved = false;
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX; mouseY = e.clientY;
+        lastMouseMove = Date.now(); mouseHasMoved = true;
+      });
+      let catX = 50, state = 'idle', stateTimer = 0, lastFrame = Date.now();
+      const SPEED = 2.5, BAT_DISTANCE = 70;
+      function setPose(p) {
+        if (sprite.src.indexOf(POSES[p].split('/').pop()) === -1) sprite.src = POSES[p];
+      }
+      function setFacing(dir) {
+        if (dir === 1) cat.classList.add('face-right');
+        else cat.classList.remove('face-right');
+      }
+      function bat() {
+        state = 'batting';
+        setPose('pounce');
+        cat.classList.add('bat');
+        setTimeout(() => {
+          cat.classList.remove('bat');
+          state = 'grooming'; stateTimer = 1500;
+          setPose('groom');
+        }, 350);
+      }
+      function tick() {
+        const now = Date.now(), dt = now - lastFrame;
+        lastFrame = now;
+        const timeSinceMouseMove = now - lastMouseMove;
+        if (state === 'batting') { requestAnimationFrame(tick); return; }
+        if (state === 'grooming') {
+          stateTimer -= dt;
+          if (stateTimer <= 0) state = mouseHasMoved && timeSinceMouseMove < 10000 ? 'chasing' : 'idle';
+          requestAnimationFrame(tick); return;
+        }
+        if (timeSinceMouseMove > 8000) {
+          if (state !== 'sleeping') { state = 'sleeping'; setPose('sleep'); }
+          requestAnimationFrame(tick); return;
+        }
+        if (state === 'sleeping' || state === 'idle') {
+          state = 'chasing';
+          setPose('look');
+          setTimeout(() => { if (state === 'chasing') setPose('walk'); }, 400);
+        }
+        const dx = mouseX - (catX + cat.offsetWidth / 2);
+        const distance = Math.abs(dx);
+        if (distance < BAT_DISTANCE) { bat(); requestAnimationFrame(tick); return; }
+        if (state === 'chasing') {
+          if (sprite.src.indexOf('cat-walk.png') === -1 && sprite.src.indexOf('cat-look-up.png') === -1) setPose('walk');
+          const dir = dx > 0 ? 1 : -1;
+          setFacing(dir);
+          catX += dir * SPEED;
+          const maxX = window.innerWidth - cat.offsetWidth - 10;
+          if (catX < 0) catX = 0;
+          if (catX > maxX) catX = maxX;
+          cat.style.left = catX + 'px';
+        }
+        requestAnimationFrame(tick);
+      }
+      cat.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (state === 'batting') return;
+        setPose('look');
+        state = 'grooming'; stateTimer = 1500;
+        setTimeout(() => setPose('groom'), 400);
+      });
+      cat.style.left = catX + 'px';
+      setPose('sit');
+      requestAnimationFrame(tick);
+    })();
+  </script>
+
+
+  <script>
+    (function() {
+      const btn = document.getElementById('mute-toggle');
+      if (!btn) return;
+      let muted = localStorage.getItem('cheesy-muted') === 'true';
+      function update() {
+        btn.textContent = muted ? '🔇' : '🔊';
+        btn.classList.toggle('muted', muted);
+      }
+      update();
+      btn.addEventListener('click', () => {
+        muted = !muted;
+        localStorage.setItem('cheesy-muted', muted ? 'true' : 'false');
+        update();
+      });
+    })();
+  </script>
+
+</body>
+</html>
